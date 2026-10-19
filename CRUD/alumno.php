@@ -1,12 +1,13 @@
+
 <?php
 
 include("conexion.php");
 
 $con = conectar();
 
-$sql = "SELECT * from alumnos";
+$sql = "SELECT * FROM alumnos";
 
-$query = mysqli_query($con,$sql);
+$query = mysqli_query($con, $sql);
 
 ?>
 
@@ -32,19 +33,48 @@ $query = mysqli_query($con,$sql);
                 <th>ACCIONES</th>
             </tr>
         </thead>
+
         <tbody>
+            <?php
+            while ($row = mysqli_fetch_array($query)) {
+            ?>
+
             <tr>
-                <td>1</td>
-                <td>125053864</td>
-                <td>alvaro</td>
-                <td>castro</td>
-                <td>ortega</td>
-                <td>30</td>
-                <td>Editar Eliminalr</td>
+                <td><?php echo $row['id'] ?></td>
+                <td><?php echo $row['matricula'] ?></td>
+                <td><?php echo $row['nombre'] ?></td>
+                <td><?php echo $row['apellido_p'] ?></td>
+                <td><?php echo $row['apellido_m'] ?></td>
+                <td><?php echo $row['edad'] ?></td>
+
+                <td>
+                    
+
+                  <a href="editar.php?id=<?php echo $row['id']; ?>">Editar</a>
+                  <br>
+                  <a href="delete.php?id=<?php echo $row['id']; ?>">Eliminar</a>
+
+
+                </td>
             </tr>
+
+            <?php
+            }
+            ?>
         </tbody>
     </table>
-    
+
+    <h1>FORMULARIO</h1>
+
+    <form action="insertar.php" method="POST">
+        <input type="text" name="matricula" placeholder="Matricula">
+        <input type="text" name="nombre" placeholder="Nombre(s)">
+        <input type="text" name="apellido_p" placeholder="Apellido_p">
+        <input type="text" name="apellido_m" placeholder="Apellido_m">
+        <input type="text" name="edad" placeholder="Edad">
+        <button type="submit">Guardar</button>
+    </form>
+
+
 </body>
 </html>
-
