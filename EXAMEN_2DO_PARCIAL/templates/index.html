@@ -1,0 +1,46 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud Catalogo de peliculas</title>
+</head>
+<body>
+    <div>
+        <h1>Catalogo de peliculas</h1>
+
+        {% with mesajes= get_flashed_messages() %}
+           {% if mesajes %}
+              {% for msj in mesajes %}
+                  <h3> {{ msj}}</h3>
+              {% endfor %}
+           {% endif %}
+        {% endwith %}
+
+        <form action="">
+            <input type="text" name="TxtTitulo" placeholder="Escribe el titulo">
+            <input type="text" name="TxtAutor" placeholder="Escribe el Autor">
+            <input type="text" name="TxtAno" placeholder="Escribe el Año de lanzamiento">
+            <input type="text" name="TxtCalificacion" placeholder="Escribe Calificación (1 - 5)">
+            <input type="text" name="TxtResena" placeholder="Escribe Reseña">
+            <button type="submit">Guardar</button>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <td> id: </td>
+                <td> autor: </td>
+                <td> artista: </td>
+                <td> año de lanzamiento: </td>
+                <td> calificacion (1-5)</td>
+                <td> reseña</td>
+            </tr>
+        </thead>
+    </table>
+    
+</body>
+</html>
