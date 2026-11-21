@@ -1,0 +1,60 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi página con DaisyUI</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+
+    <!-- INICIO NAVBAR -->
+     <div class="navbar bg-primary text-primary-content">
+        <div class="navbar-start">
+
+        </div>
+        <div class="navbar-center">
+            <a class="btn btn-ghost text-xl">daisyUI</a>
+        </div>
+        <div class="navbar-end">
+            <a href="{{ url_for('logout') }}" class="btn btn-ghost btn-circle">
+                <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+    
+    <!-- FIN NAVBAR -->
+
+    <!-- INICIO DE CONTENIDO -->
+
+    {% block content %}
+
+    {% endblock %}
+
+    <!-- FIN DE CONTENIDO -->
+
+    <!-- INICIO FOOTER -->
+    <footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+        <aside>
+            <p>
+                ACME Industries Ltd.
+                <br />
+                Providing reliable tech since 1992
+            </p>
+        </aside>
+        <nav>
+            <h6 class="footer-title">Services</h6>
+            <a class="link link-hover">Branding</a>
+            <a class="link link-hover">Design</a>
+        </nav>
+    </footer>
+    <!-- FIN FOOTER -->
+
+</body>
+</html>
+

@@ -5,42 +5,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crud Catalogo de peliculas</title>
+    <title>CRUD Películas</title>
 </head>
 <body>
+
     <div>
-        <h1>Catalogo de peliculas</h1>
+        <h1>CATÁLOGO DE PELÍCULAS</h1>
 
         {% with mesajes= get_flashed_messages() %}
-           {% if mesajes %}
-              {% for msj in mesajes %}
-                  <h3> {{ msj}}</h3>
-              {% endfor %}
-           {% endif %}
+            {% if mesajes %}
+                {% for msj in mesajes %}
+                    <h3> {{ msj }}</h3>
+                {% endfor %}
+            {% endif %}
         {% endwith %}
 
-        <form action="">
-            <input type="text" name="TxtTitulo" placeholder="Escribe el titulo">
-            <input type="text" name="TxtAutor" placeholder="Escribe el Autor">
-            <input type="text" name="TxtAno" placeholder="Escribe el Año de lanzamiento">
-            <input type="text" name="TxtCalificacion" placeholder="Escribe Calificación (1 - 5)">
-            <input type="text" name="TxtResena" placeholder="Escribe Reseña">
+        <form action="/guardar" method="POST">
+            <input type="text" name="txtTitulo" placeholder="Escribe el título">
+            <input type="text" name="txtAutor" placeholder="Escribe el autor">
+            <input type="text" name="txtAnio" placeholder="Escribe el año de lanzamiento">
+            <input type="text" name="txtCalificacion" placeholder="Escribe la calificación (1 - 5)">
+            <input type="text" name="txtResena" placeholder="Escribe la reseña">
             <button type="submit">Guardar</button>
         </form>
-    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <td> id: </td>
-                <td> autor: </td>
-                <td> artista: </td>
-                <td> año de lanzamiento: </td>
-                <td> calificacion (1-5)</td>
-                <td> reseña</td>
-            </tr>
-        </thead>
-    </table>
-    
+        <table>
+            <thead>
+                <tr>
+                    <td>Id: </td>
+                    <td>Título: </td>
+                    <td>Autor: </td>
+                    <td>Año de lanzamiento: </td>
+                    <td>Calificación: </td>
+                    <td>Reseña: </td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pel in listPeliculas %}
+                <tr>
+                    <td>{{pel.0}}</td>
+                    <td>{{pel.1}}</td>
+                    <td>{{pel.2}}</td>
+                    <td>{{pel.3}}</td>
+                    <td>{{pel.4}}</td>
+                    <td>{{pel.5}}</td>
+                    <td>
+                        <a href="/editar/{{pel.0}}">Editar</a>
+                        <a href="/eliminar/{{pel.0}}">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

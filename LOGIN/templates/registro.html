@@ -1,0 +1,50 @@
+
+
+{% extends 'nav_footer.html' %}
+
+{% block content %}
+
+<div class="p-10 max-w-md mx-auto">
+
+    <h1 class="text-3xl font-bold">Registro de usuarios</h1>
+
+    <form action="/registro" method="POST" class="mt-4 flex flex-col gap-4">
+
+        <label>Nombre(s):</label>
+        <input type="text" name="nombre" class="input input-bordered w-full" required>
+
+        <label>Apellido paterno:</label>
+        <input type="text" name="apellido_p" class="input input-bordered w-full" required>
+
+        <label>Apellido materno:</label>
+        <input type="text" name="apellido_m" class="input input-bordered w-full" required>
+
+        <label>Correo:</label>
+        <input type="email" name="correo" class="input input-bordered w-full" required>
+
+        <label>Contraseña:</label>
+        <input type="password" name="password" class="input input-bordered w-full" required>
+
+        <label for="id_rol">Rol:</label>
+
+        <select name="id_rol" id="id_rol" class="select select-bordered w-full">
+            <option value="1">Administrador</option>
+            <option value="2">Usuario</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary">
+            Registrarse
+        </button>
+
+    </form>
+
+    <p class="mt-4">
+        <a class="link link-primary" href="{{ url_for('logout') }}">
+            Regresar
+        </a>
+    </p>
+
+</div>
+
+{% endblock %}
+
